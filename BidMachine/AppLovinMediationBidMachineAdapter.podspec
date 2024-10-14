@@ -20,11 +20,13 @@ LICENSE
 
 s.source = 
 { 
-  :http => "https://artifacts.applovin.com/ios/com/applovin/mediation/bidmachine-adapter/#{s.name}-#{s.version}.zip",
+  # :http => "https://artifacts.applovin.com/ios/com/applovin/mediation/bidmachine-adapter/#{s.name}-#{s.version}.zip",
+  :http => "https://artifacts.applovin.com/ios/com/applovin/mediation/bidmachine-adapter/AppLovinMediationBidMachineAdapter-3.0.1.0.0.zip",
   :type => 'zip'
 }
 
-s.vendored_frameworks = "#{s.name}-#{s.version}/#{s.name}.xcframework"
+# s.vendored_frameworks = "#{s.name}-#{s.version}/#{s.name}.xcframework"
+s.vendored_frameworks = "AppLovinMediationBidMachineAdapter-3.0.1.0.0/AppLovinMediationBidMachineAdapter.xcframework"
 
 s.dependency 'BidMachine', '= 3.1.0-beta.0'
 s.dependency 'AppLovinSDK', '>= 13.0.0'
