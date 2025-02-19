@@ -716,13 +716,13 @@ static MAAdapterInitializationStatus ALBidMachineSDKInitializationStatus = NSInt
 
 - (void)didPresentAd:(id<BidMachineAdProtocol>)ad
 {
-    [self.parentAdapter log: @"Interstitial ad shown"];
+//    [self.parentAdapter log: @"Interstitial ad shown"];
 }
 
 - (void)didTrackImpression:(id<BidMachineAdProtocol>)ad
 {
-    [self.parentAdapter log: @"Interstitial ad impression tracked"];
-    [self.delegate didDisplayInterstitialAd];
+//    [self.parentAdapter log: @"Interstitial ad impression tracked"];
+//    [self.delegate didDisplayInterstitialAd];
 }
 
 - (void)didDismissAd:(id<BidMachineAdProtocol>)ad
@@ -803,13 +803,13 @@ static MAAdapterInitializationStatus ALBidMachineSDKInitializationStatus = NSInt
 
 - (void)didPresentAd:(id<BidMachineAdProtocol>)ad
 {
-    [self.parentAdapter log: @"Rewarded ad shown"];
+//    [self.parentAdapter log: @"Rewarded ad shown"];
 }
 
 - (void)didTrackImpression:(id<BidMachineAdProtocol>)ad
 {
-    [self.parentAdapter log: @"Rewarded ad impression tracked"];
-    [self.delegate didDisplayRewardedAd];
+//    [self.parentAdapter log: @"Rewarded ad impression tracked"];
+//    [self.delegate didDisplayRewardedAd];
 }
 
 - (void)didDismissAd:(id<BidMachineAdProtocol>)ad
@@ -907,13 +907,13 @@ static MAAdapterInitializationStatus ALBidMachineSDKInitializationStatus = NSInt
 
 -(void)didTrackImpression:(id<BidMachineAdProtocol>)ad
 {
-    [self.parentAdapter log: @"AdView shown"];
-    [self.delegate didDisplayAdViewAd];
+//    [self.parentAdapter log: @"AdView shown"];
+//    [self.delegate didDisplayAdViewAd];
 }
 
 - (void)didPresentAd:(id<BidMachineAdProtocol>)ad
 {
-    [self.parentAdapter log: @"AdView ad presented"];
+//    [self.parentAdapter log: @"AdView ad presented"];
 }
 
 - (void)didUserInteraction:(id<BidMachineAdProtocol>)ad
