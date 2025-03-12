@@ -177,7 +177,7 @@ static MAAdapterInitializationStatus ALBidMachineSDKInitializationStatus = NSInt
         return;
     }
     
-    [BidMachineSdk.shared tokenWith: bidMachinePlacementFormat completion:^(NSString *_Nullable signal) {
+    [BidMachineSdk.shared tokenWith: bidMachinePlacementFormat extras: parameters.localExtraParameters completion:^(NSString *_Nullable signal) {
         [self log: @"Signal collection successful with%@ valid signal", [signal al_isValidString] ? @"" : @"out"];
         [delegate didCollectSignal: signal];
     }];
