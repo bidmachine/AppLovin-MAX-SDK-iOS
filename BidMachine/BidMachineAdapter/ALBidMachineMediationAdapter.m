@@ -9,7 +9,7 @@
 #import "ALBidMachineMediationAdapter.h"
 #import <BidMachine/BidMachine-Swift.h>
 
-#define ADAPTER_VERSION @"3.2.1.0.0"
+#define ADAPTER_VERSION @"3.3.0.0.0"
 
 #define TITLE_LABEL_TAG          1
 #define MEDIA_VIEW_CONTAINER_TAG 2
@@ -177,9 +177,28 @@ static MAAdapterInitializationStatus ALBidMachineSDKInitializationStatus = NSInt
         return;
     }
     
-    [BidMachineSdk.shared tokenWith: bidMachinePlacementFormat completion:^(NSString *_Nullable signal) {
-        [self log: @"Signal collection successful with%@ valid signal", [signal al_isValidString] ? @"" : @"out"];
-        [delegate didCollectSignal: signal];
+    NSError *placementError = nil;
+    BidMachinePlacement *placement = [BidMachineSdk.shared placementFrom:bidMachinePlacementFormat
+                                                                   error:&placementError
+                                                                 builder:^(id<BidMachinePlacementBuilderProtocol> builder) {
+        NSString *placement_id = parameters.localExtraParameters[@"bdm_placement"];
+        if (placement_id) {
+            [builder withPlacementId:placement_id];
+        }
+        [builder withCustomParameters:parameters.localExtraParameters];
+    }];
+    
+    if ( placementError )
+    {
+        [self log: @"Signal collection failed with placement error: %@", placementError];
+        [delegate didFailToCollectSignalWithErrorMessage: [NSString stringWithFormat: @"Placement error: %@", placementError]];
+        
+        return;
+    }
+    
+    [BidMachineSdk.shared tokenWithPlacement:placement completion:^(NSString * _Nullable signal) {
+            [self log: @"Signal collection successful with%@ valid signal", [signal al_isValidString] ? @"" : @"out"];
+            [delegate didCollectSignal: signal];
     }];
 }
 
